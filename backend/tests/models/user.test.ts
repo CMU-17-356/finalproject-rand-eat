@@ -1,4 +1,4 @@
-import { UserModel, UserInterface } from "../../src/models/user";
+import { UserModel, UserInterface } from "../../src/models/User";
 
 jest.useFakeTimers();
 describe("user test", function () {
