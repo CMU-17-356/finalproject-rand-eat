@@ -1,0 +1,21 @@
+import { UserModel, UserInterface } from "../../src/models/user";
+
+jest.useFakeTimers();
+describe("user test", function () {
+  it("should take on assigned values", () => {
+    const c = new UserModel();
+    c.first_name = "Riccardo";
+    c.last_name = "Santoni";
+
+    expect(c.first_name).toEqual("Riccardo");
+    expect(c.last_name).toEqual("Santoni");
+  });
+
+  it("should be invalid if a field is empty", () => {
+    const c = new UserModel();
+
+    c.validate(function (err) {
+      expect(err).toBeDefined();
+    });
+  });
+});
