@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+import {Page, Spacer, Text} from '@geist-ui/react';
 import './App.css';
+import NavComponent from './components/common/nav';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <div className='cover'>
+          <div className="landing-info">
+            
+            <Spacer h={2}/>
+            <h1 className='landing-text'>Find your Restaurant!</h1>
+          </div>
+        </div>
+        {/* <NavComponent /> */}
+        <div className='page'>
+          <Page>
+            <Page.Content>
+              <h1>Welcome to Rand.eat</h1>
+              <h3>Where great decisions are made easily!</h3>
+              <Text blockquote>
+                "The best and easiest method
+                  I have ever had for getting food" - User
+              </Text>
+              <Spacer h={3}/>
+
+            </Page.Content>
+          </Page>
+
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,13 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {CssBaseline} from '@geist-ui/react';
 import './index.css';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import NavComponent from './components/common/nav';
+import ListingComponent from './components/pages/listing';
+import ReservationHistoryComponent from './components/pages/reservationHistory';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Router>
+      <CssBaseline />
+      <NavComponent/>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="listing" element={<ListingComponent />} />
+        
+      </Routes>
+    </Router>,
   document.getElementById('root')
 );
 

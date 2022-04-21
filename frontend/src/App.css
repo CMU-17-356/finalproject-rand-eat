@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+.cover {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#dbe0fc;
+}
+
+.landing-info {
+  text-align: center;
+  position: relative;
+}
+
+.landing-logo {
+  max-width: 80%;
+}
+
+.page {
+  margin: 100px 10%;
+}
+
+.landing-text {
+  color: #0a0e28;
+}
