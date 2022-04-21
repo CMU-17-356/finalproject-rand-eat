@@ -1,4 +1,3 @@
-node_modules
 import { Request, Response, NextFunction } from "express";
 import * as winston from "winston";
 
