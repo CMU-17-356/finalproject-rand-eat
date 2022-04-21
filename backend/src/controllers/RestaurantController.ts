@@ -3,7 +3,7 @@ import { apiErrorHandler } from "../handlers/errorHandler";
 import { RestaurantModel } from "../models/Restaurant";
 import * as winston from "winston";
 
-export default class RestaurantsController {
+export default class RestaurantController {
   constructor() {}
 
   async findAll(req: Request, res: Response, next: NextFunction) {

@@ -3,7 +3,7 @@ import { apiErrorHandler } from "./../handlers/errorHandler";
 import { LocationModel } from "../models/Location";
 import * as winston from "winston";
 
-export default class LocationsController {
+export default class LocationController {
   constructor() {}
 
   async findAll(req: Request, res: Response, next: NextFunction) {
