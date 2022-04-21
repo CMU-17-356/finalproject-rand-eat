@@ -1,9 +1,9 @@
 import { Router } from "express";
-import LocationsController from "../controllers/LocationController";
+import LocationController from "../controllers/LocationController";
 
 class LocationRoutes {
   router = Router();
-  locationController = new LocationsController();
+  locationController = new LocationController();
 
   constructor() {
     this.intializeRoutes();

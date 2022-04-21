@@ -1,9 +1,9 @@
 import { Router } from "express";
-import ReservationsController from "../controllers/ReservationController";
+import ReservationController from "../controllers/ReservationController";
 
 class ReservationRoutes {
   router = Router();
-  reservationController = new ReservationsController();
+  reservationController = new ReservationController();
 
   constructor() {
     this.intializeRoutes();

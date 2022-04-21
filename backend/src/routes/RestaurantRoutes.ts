@@ -1,9 +1,9 @@
 import { Router } from "express";
-import RestaurantsController from "../controllers/RestaurantController";
+import RestaurantController from "../controllers/RestaurantController";
 
 class RestaurantRoutes {
   router = Router();
-  restaurantController = new RestaurantsController();
+  restaurantController = new RestaurantController();
 
   constructor() {
     this.intializeRoutes();
