@@ -27,7 +27,7 @@ app.use(cors());
 const port = 8080;
 
 app.get("/", (req, res) => {
-  res.status(200).send("Hello Group 3! - Riccardo Santoni");
+  res.status(200).send("Hello Rand Eat! - Riccardo Santoni");
 });
 
 app.listen(port, () => {
