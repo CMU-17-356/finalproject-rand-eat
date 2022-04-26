@@ -2,6 +2,8 @@ import { Request, Response, NextFunction } from "express";
 import { apiErrorHandler } from "../handlers/errorHandler";
 import { ReservationRequestModel } from "../models/ReservationRequest";
 import * as winston from "winston";
+import axios from "axios";
+import { ReservationModel, ReservationInterface } from "../models/Reservation";
 
 export default class ReservationRequestController {
   constructor() {}
@@ -52,11 +54,80 @@ export default class ReservationRequestController {
 
   async create(req: Request, res: Response, next: NextFunction) {
     try {
-      new ReservationRequestModel(req.body).save(function (err) {
+      new ReservationRequestModel(req.body).save(async function (err, result) {
         if (err) {
           apiErrorHandler(err, req, res, "Create reservationrequest failed.");
         } else {
-          res.sendStatus(201);
+          // Create reservation. Poll various restaurants given filter criteria
+          const locationRes = await axios.post(
+            "https://worldwide-restaurants.p.rapidapi.com/typeahead",
+            {
+              language: "en_US",
+              q: req.body.location.city,
+            },
+            {
+              headers: {
+                "content-type": "application/json",
+                "X-RapidAPI-Host": "worldwide-restaurants.p.rapidapi.com",
+                "X-RapidAPI-Key":
+                  "e8a9328cd1msh20b885ea27319b6p192189jsnd2b26f149fcc",
+              },
+            }
+          );
+
+          const locationId =
+            locationRes.data.results.data[0].result_object.location_id;
+
+          const restaurantRes = await axios.post(
+            "https://worldwide-restaurants.p.rapidapi.com/search",
+            {
+              language: "en_US",
+              limit: "30",
+              location_id: locationId,
+              currency: "USD",
+            },
+            {
+              headers: {
+                "content-type": "application/json",
+                "X-RapidAPI-Host": "worldwide-restaurants.p.rapidapi.com",
+                "X-RapidAPI-Key":
+                  "e8a9328cd1msh20b885ea27319b6p192189jsnd2b26f149fcc",
+              },
+            }
+          );
+
+          const restaurants = restaurantRes.data.results.data;
+          const restaurant =
+            restaurants[Math.floor(Math.random() * restaurants.length)];
+
+          console.log(restaurant);
+
+          const reservation = {
+            name: "Reservation",
+            user: req.body.user,
+            reservationRequest: result._id,
+            restaurant: {
+              name: restaurant.name,
+              location: {
+                street: restaurant.address_obj.street1,
+                city: restaurant.address_obj.city,
+                state: restaurant.address_obj.state,
+                zipcode: restaurant.postalcode
+                  ? restaurant.postalcode
+                  : req.body.location.zipcode,
+              },
+              email: restaurant.email,
+              phone_number: restaurant.phone,
+            },
+            date: req.body.date,
+            numGuests: req.body.numGuests,
+          };
+
+          new ReservationModel(reservation).save(function (err) {
+            console.log(err);
+          });
+
+          res.status(201).json(result);
         }
       });
     } catch (err) {

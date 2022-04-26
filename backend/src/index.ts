@@ -1,10 +1,10 @@
 import express, { Application } from "express";
 import bodyParser from "body-parser";
-// import Routes from "./routes";
+import Routes from "./routes";
 import mongoose from "mongoose";
 import cors from "cors";
 
-var mongoDBUrl = "TODO";
+var mongoDBUrl = "mongodb://localhost:27017/myapp";
 
 mongoose.connect(mongoDBUrl);
 
@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
-// const routes: Routes = new Routes(app);
+const routes: Routes = new Routes(app);
 const port = 8080;
 
 app.get("/", (req, res) => {

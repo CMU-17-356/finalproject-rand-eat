@@ -11,7 +11,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react"
+    "jsx": "react",
+    "lib": ["DOM"]
   },
   "include": ["src/**/*.ts", "tests/**/*.ts"]
 }

@@ -36,11 +36,11 @@ export default class LocationController {
 
   async create(req: Request, res: Response, next: NextFunction) {
     try {
-      new LocationModel(req.body).save(function (err) {
+      new LocationModel(req.body).save(function (err, result) {
         if (err) {
           apiErrorHandler(err, req, res, "Create location failed.");
         } else {
-          res.sendStatus(201);
+          res.status(201).json(result);
         }
       });
     } catch (err) {

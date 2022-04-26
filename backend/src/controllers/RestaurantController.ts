@@ -36,11 +36,11 @@ export default class RestaurantController {
 
   async create(req: Request, res: Response, next: NextFunction) {
     try {
-      new RestaurantModel(req.body).save(function (err) {
+      new RestaurantModel(req.body).save(function (err, result) {
         if (err) {
           apiErrorHandler(err, req, res, "Create restaurant failed.");
         } else {
-          res.sendStatus(201);
+          res.status(201).json(result);
         }
       });
     } catch (err) {

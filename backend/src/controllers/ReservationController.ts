@@ -36,11 +36,11 @@ export default class ReservationController {
 
   async create(req: Request, res: Response, next: NextFunction) {
     try {
-      new ReservationModel(req.body).save(function (err) {
+      new ReservationModel(req.body).save(function (err, result) {
         if (err) {
           apiErrorHandler(err, req, res, "Create reservation failed.");
         } else {
-          res.sendStatus(201);
+          res.status(201).json(result);
         }
       });
     } catch (err) {
