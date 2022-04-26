@@ -1,25 +1,25 @@
 import React from 'react';
-import {Input, Grid, Card, Button, Select, Spacer, Table} from '@geist-ui/react';
-import {ArrowRightCircle, ShoppingCart} from '@geist-ui/icons';
+import { Table } from '@geist-ui/react';
 import './reservationHistory.css';
+
 function ReservationHistoryComponent() {
+  const data = [
+    { restaurant: "Rose Tea Cafe", location: "414 S Craig St", date: "4/15/22", time: "7pm" },
+    { restaurant: "Lucca Ristorante", location: "317 S Craig St", date: "4/9/22", time: "6:30pm" },
+    { restaurant: "Noodlehead", location: "242 S Highland Ave", date: "4/1/22", time: "1pm" },
+  ];
+
+  return (
+    <div>
+      <h1 className='landing-text'>Reservation History</h1>
+      <Table data={data}>
+        <Table.Column prop="restaurant" label="restaurant" />
+        <Table.Column prop="location" label="location" />
+        <Table.Column prop="date" label="date" />
+        <Table.Column prop="time" label="time" />
+      </Table>
+    </div>
+  );
+}
   
-    // () => {
-    //     const data = [
-    //       { property: 'Restaurant Name', description: 'Content type', type: 'secondary | warning', default: '-' },
-    //       { property: 'Date', description: 'DOM element to use', type: 'string', default: '-' },
-    //       { property: 'Time', description: 'Bold style', type: 'boolean', default: 'true' },
-    //     ]
-    //     return (
-    //       <Table data={data}>
-    //         <Table.Column prop="property" label="property" />
-    //         <Table.Column prop="description" label="description" />
-    //         <Table.Column prop="type" label="type" />
-    //         <Table.Column prop="default" label="default" />
-    //       </Table>
-    //     )
-    //   }
-    
-  }
-  
-  export default ReservationHistoryComponent;
+export default ReservationHistoryComponent;

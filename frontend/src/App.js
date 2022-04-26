@@ -1,6 +1,5 @@
 import {Page, Spacer, Text} from '@geist-ui/react';
 import './App.css';
-import NavComponent from './components/common/nav';
 
 function App() {
   return (
@@ -8,12 +7,11 @@ function App() {
       <div>
         <div className='cover'>
           <div className="landing-info">
-            
             <Spacer h={2}/>
             <h1 className='landing-text'>Find your Restaurant!</h1>
           </div>
         </div>
-        {/* <NavComponent /> */}
+        
         <div className='page'>
           <Page>
             <Page.Content>
@@ -24,10 +22,8 @@ function App() {
                   I have ever had for getting food" - User
               </Text>
               <Spacer h={3}/>
-
             </Page.Content>
           </Page>
-
         </div>
       </div>
     </div>
