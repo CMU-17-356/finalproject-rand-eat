@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals';
 import NavComponent from './components/common/nav';
 import ListingComponent from './components/pages/listing';
 import ReservationHistoryComponent from './components/pages/reservationHistory';
+import ConfirmationComponent from './components/pages/confirmation';
 
 ReactDOM.render(
   <Router>
@@ -16,7 +17,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="listing" element={<ListingComponent />} />
-        
+        <Route path="confirmation" element={<ConfirmationComponent/>}/>
       </Routes>
     </Router>,
   document.getElementById('root')
