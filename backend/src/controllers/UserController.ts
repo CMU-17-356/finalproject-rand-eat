@@ -37,7 +37,7 @@ export default class UsersController {
 
   async create(req: Request, res: Response, next: NextFunction) {
     try {
-      new UserModel(req, res).save(function (err, result) {
+      new UserModel(req.body).save(function (err, result) {
         if (err) {
           apiErrorHandler(err, req, res, "Create user failed.");
         } else {

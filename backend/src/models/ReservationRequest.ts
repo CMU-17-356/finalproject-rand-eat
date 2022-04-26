@@ -12,11 +12,11 @@ export interface ReservationRequestInterface extends Document {
 }
 
 export const ReservationRequestSchema = new Schema({
-  user: { type: UserSchema, required: true },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "UserSchema" },
   location: { type: LocationSchema, required: true },
   date: { type: Date },
   numGuests: { type: Number },
-  cost: { type: String },
+  cost: { type: Number },
   cusinePreference: { type: [String] },
 });
 
