@@ -1,5 +1,6 @@
 import React from 'react';
 import { Input, Grid, Card, Button, Select, Spacer } from '@geist-ui/react';
+import {Link} from 'react-router-dom';
 import './listing.css';
 
 function ListingComponent() {
@@ -32,13 +33,13 @@ function ListingComponent() {
         </Select>
         <Spacer h={2}/>
         <Select placeholder="Price Range">
-          <Select.Option value="1" disabled>$0-$20</Select.Option>
+          <Select.Option value="1">$0-$20</Select.Option>
           <Select.Option value="2">$20-$60</Select.Option>
-          <Select.Option value="3" disabled>$60-$120</Select.Option>
+          <Select.Option value="3">$60-$120</Select.Option>
           <Select.Option value="4">$120+</Select.Option>
         </Select>
         <Spacer h={2}/>
-        <Button type="success">Submit</Button>
+        <Link to="/confirmation"><Button type="success">Submit</Button></Link>
       </form>
       </Card>
     </div>

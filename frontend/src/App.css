@@ -41,7 +41,7 @@
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 60vh;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -64,4 +64,15 @@
 
 .landing-text {
   color: #0a0e28;
+}
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.centered {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
