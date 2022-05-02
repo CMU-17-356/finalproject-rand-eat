@@ -17,7 +17,7 @@ export const ReservationRequestSchema = new Schema({
   date: { type: Date },
   numGuests: { type: Number },
   cost: { type: Number },
-  cusinePreference: { type: [String] },
+  cuisinePreference: { type: [String] },
 });
 
 export const ReservationRequestModel: Model<ReservationRequestInterface> =
