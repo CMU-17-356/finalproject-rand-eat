@@ -58,6 +58,7 @@ export default class ReservationRequestController {
         if (err) {
           apiErrorHandler(err, req, res, "Create reservationrequest failed.");
         } else {
+          console.log(req.body);
           // Create reservation. Poll various restaurants given filter criteria
           const locationRes = await axios.post(
             "https://worldwide-restaurants.p.rapidapi.com/typeahead",
@@ -106,6 +107,17 @@ export default class ReservationRequestController {
             name: "Reservation",
             user: req.body.user,
             reservationRequest: result._id,
+            // restaurant: {
+            //   name: "test",
+            //   location: {
+            //     street: req.body.location.street,
+            //     city: req.body.location.city,
+            //     state: req.body.location.state,
+            //     zipcode: req.body.location.zipcode,
+            //   },
+            //   email: "test2",
+            //   phone_number: "test3",
+            // },
             restaurant: {
               name: restaurant.name,
               location: {
